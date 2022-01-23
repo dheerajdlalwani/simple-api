@@ -1,0 +1,66 @@
+{% load static %} {% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple API</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <script>
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === name + "=") {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+    const csrftoken = getCookie("csrftoken");
+  </script>
+  <body>
+    <header>
+      <h1>Welcome to <em class="heading_color">Diagon Alley</em> 🎃</h1>
+    </header>
+    <div class="container">
+      <div class="product_row">
+        <div class="product">
+          The Elder Wand
+          <button class="buy_button" data-product_id="elder_wand_3043">
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          A Time Turner
+          <button class="buy_button" data-product_id="time_turner_3022">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+      <div class="product_row">
+        <div class="product">
+          The Cloak of Invisibility
+          <button class="buy_button" data-product_id="invisibility_cloak_3050">
+            Add to Cart
+          </button>
+        </div>
+        <div class="product">
+          The Marauder's Map
+          <button class="buy_button" data-product_id="marauder_map_4092">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+      <div class="total">Total: 5</div>
+    </div>
+  </body>
+  <script src="{% static 'js/script.js' %}"></script>
+</html>
